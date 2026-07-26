@@ -1,280 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '25942093972142915');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=25942093972142915&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trade Finder</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Free Telegram Trading Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-:root {
-  --bg: linear-gradient(135deg, #020617, #0f172a);
-  --green: #00ff9d;
-  --green2: #00ffa6;
-  --card: rgba(255,255,255,0.05);
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+body{
+background:#090909;
+color:#fff;
+overflow-x:hidden;
+}
+.bg-animation{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#FFD70022,transparent 35%),
+radial-gradient(circle at bottom,#00ff8822,transparent 35%),
+#090909;
+z-index:-1;
+}
+.top-btn{
+padding:20px;
+text-align:center;
+}
+.top-btn a,.join,.sticky a{
+display:block;
+max-width:420px;
+margin:auto;
+padding:18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+background:linear-gradient(90deg,#FFD700,#ff9800);
+color:#000;
+}
+.hero{
+padding:30px 20px;
+text-align:center;
+}
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+border:5px solid #FFD700;
+object-fit:cover;
+}
+.verified{
+display:inline-block;
+margin:15px 0;
+padding:8px 20px;
+border:1px solid #FFD700;
+border-radius:50px;
+color:#FFD700;
+}
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:35px 0;
+}
+.stats div{
+background:#141414;
+padding:20px;
+border-radius:15px;
+width:110px;
+}
+.features,.risk{
+padding:60px 20px;
+text-align:center;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1100px;
+margin:auto;
+}
+.card{
+background:#141414;
+padding:25px;
+border-radius:15px;
+}.risk{
+background:#111;
 }
 
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
+.sticky{
+position:fixed;
+left:0;
+bottom:0;
+width:100%;
+padding:15px;
+background:#000;
+z-index:999;
 }
 
-body {
-  background: var(--bg);
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
-  padding:20px;
+footer{
+padding:35px 20px 110px;
+text-align:center;
+color:#999;
 }
 
-.container {
-  max-width:420px;
-  width:100%;
+footer a{
+color:#FFD700;
+text-decoration:none;
+font-weight:700;
 }
 
-/* CARD */
-.card {
-  background: var(--card);
-  backdrop-filter: blur(15px);
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  box-shadow: 0 0 25px rgba(0,255,157,0.1);
-  animation: fadeUp 1s ease;
+footer a:hover{
+text-decoration:underline;
 }
 
-/* IMAGE */
-.profile {
-  width:120px;
-  height:120px;
-  border-radius:20px;
-  object-fit:cover;
-  border:3px solid var(--green);
-  box-shadow: 0 0 15px var(--green);
-  margin-bottom:10px;
+.hidden{
+opacity:0;
+transform:translateY(60px);
+transition:.8s;
 }
 
-/* 🔥 LIVE DOT */
-.live-status {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin-bottom:10px;
-  font-size:13px;
+.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.dot {
-  width:10px;
-  height:10px;
-  background:#00ff9d;
-  border-radius:50%;
-  box-shadow:0 0 10px #00ff9d;
-  animation:pulse 1.5s infinite;
+@media(max-width:768px){
+
+.hero h1{
+font-size:30px;
 }
 
-@keyframes pulse {
-  0% { transform:scale(1); opacity:1; }
-  50% { transform:scale(1.5); opacity:0.6; }
-  100% { transform:scale(1); opacity:1; }
+.hero p{
+font-size:15px;
 }
 
-/* TITLE */
-.title {
-  color: var(--green);
-  font-weight:700;
-  font-size:24px;
+.profile{
+width:140px;
+height:140px;
 }
 
-/* BADGE */
-.badge {
-  display:inline-block;
-  padding:6px 15px;
-  background: rgba(0,255,157,0.1);
-  border-radius:20px;
-  margin:10px 0;
+.top-btn a,
+.join,
+.sticky a{
+font-size:17px;
+padding:15px;
 }
 
-/* SMALL BUTTONS */
-.small-btns {
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:10px;
+.features h2,
+.risk h2{
+font-size:28px;
 }
 
-.small-btn {
-  padding:6px 12px;
-  border-radius:20px;
-  background: rgba(255,255,255,0.08);
-  font-size:12px;
+.stats{
+gap:12px;
 }
 
-/* COUNTER */
-.counter {
-  margin-top:12px;
-  font-size:14px;
-  color:#00ff9d;
-  font-weight:600;
-  text-shadow:0 0 10px #00ff9d;
+.stats div{
+width:95px;
+padding:15px;
 }
 
-/* BUTTON */
-.main-btn {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
-  margin:20px 0;
-  padding:15px;
-  border-radius:50px;
-  background: linear-gradient(90deg, var(--green), var(--green2));
-  color:black;
-  font-weight:600;
-  text-decoration:none;
-  transition:0.3s;
-  box-shadow:0 0 20px rgba(0,255,157,0.4);
 }
-
-.main-btn:hover {
-  transform:scale(1.05);
-}
-
-/* FEATURES */
-.feature {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background: var(--card);
-  border-radius:15px;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid rgba(0,255,157,0.2);
-  transition:0.3s;
-}
-
-.feature:hover {
-  transform:translateY(-5px);
-}
-
-/* CTA */
-.cta {
-  background: linear-gradient(135deg, #00ff9d, #00c97a);
-  color:black;
-  padding:20px;
-  border-radius:20px;
-  margin-top:20px;
-  text-align:center;
-  box-shadow:0 0 20px rgba(0,255,157,0.5);
-}
-
-.cta-btn {
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 20px;
-  border-radius:30px;
-  background:white;
-  color:black;
-  text-decoration:none;
-  font-weight:600;
-  transition:0.3s;
-}
-
-.cta-btn:hover {
-  transform:scale(1.05);
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="container">
+<div class="bg-animation"></div>
 
-  <div class="card">
-
-    <!-- IMAGE -->
-    <img src="logo.png" class="profile">
-
-    <!-- 🔥 LIVE STATUS -->
-    <div class="live-status">
-      <div class="dot"></div>
-      <span>Live Now</span>
-    </div>
-
-    <!-- TITLE -->
-    <div class="title">ROCHIT SINGH STOCK</div>
-
-    <!-- NAME -->
-    <div class="badge">👤 Snow </div>
-
-    <div>✓ Trusted by thousands of traders</div>
-
-    <div class="small-btns">
-      <div class="small-btn">24/7 Updates</div>
-      <div class="small-btn">Free to Join</div>
-    </div>
-
-    <!-- COUNTER -->
-    <div class="counter">
-      🔥 <span id="count">1243</span> people joined today
-    </div>
-
-  </div>
-
-  <!-- BUTTON -->
-  <a href="https://t.me/+czNi-w9Zy_I4MGY1" class="main-btn">🚀 Join Telegram Channel</a>
-
-  <!-- FEATURES -->
-  <div class="feature">📊 <div>Market Insights & Analysis</div></div>
-  <div class="feature">📚 <div>Learn Trading</div></div>
-  <div class="feature">⚡ <div>Tips & Tricks</div></div>
-
-  <!-- CTA -->
-  <div class="cta">
-    ⭐ Stay Ahead with Knowledge ⭐<br>
-    Join now and never miss profitable updates 🚀
-    <br>
-    <a href="https://t.me/+czNi-w9Zy_I4MGY1" class="cta-btn">🚀 Join Telegram Channel</a>
-  </div>
-
+<div class="top-btn">
+<a href="https://t.me/+LS0QvSe7sQ4wMmFl" target="_blank">
+🚀 JOIN FREE TELEGRAM CHANNEL
+</a>
 </div>
 
-<script>
-let count = 1243;
-setInterval(() => {
-  count += Math.floor(Math.random() * 3) + 1;
-  document.getElementById("count").innerText = count;
-}, 2000);
-</script>
+<section class="hero">
 
-</body>
-</html>
+<img src="BADSHA.JPG.JPG" class="profile" alt="Baadshah Broking">
+
+<h1>Baadshah Broking™ (ORIGINAL)</h1>
+
+<div class="verified">
+⭐ Trusted Trading Community
+</div>
+
+<p>
+Join India's Fast Growing Telegram Community for Educational Market Analysis, Learning Resources & Daily Updates.
+</p>
+
+<div class="stats">
+<div>
+<h2>10K+</h2>
+<span>Members</span>
+</div>
+
+<div>
+<h2>4.9★</h2>
+<span>Rating</span>
+</div>
+
+<div>
+<h2>Daily</h2>
+<span>Updates</span>
+</div>
+</div>
+
+<a class="join" href="https://t.me/+LS0QvSe7sQ4wMmFl" target="_blank">
+Join Telegram Now 🚀
+</a>
+
+</section>
+
+<section class="features">
+<h2>Why Join Us?</h2>
+
+<div class="grid">
+
+<div class="card">
+📊
+<h3>Market Analysis</h3>
+<p>Educational charts & market insights.</p>
+</div>
+
+<div class="card">
+📈
+<h3>Daily Updates</h3>
+<p>Regular market news and learning content.</p>
+</div><div class="card">
+⚡
+<h3>Fast Alerts</h3>
+<p>Stay informed with timely educational updates.</p>
+</div>
+
+<div class="card">
+🎯
+<h3>Trading Education</h3>
+<p>Learn trading concepts and strategies.</p>
+</div>
+
+</div>
+</section>
+
+<section class="risk">
+<h2>Risk Disclaimer</h2>
+<p>
+Trading and investing involve risk. This Telegram community shares educational information only and does not provide personalized financial advice.
+</p>
+</section>
+
+<div class="sticky">
+<a href="https://t.me/+LS0QvSe7sQ4wMmFl" target="_blank">
+JOIN FREE TELEGRAM 🚀
+</a>
+</div>
+
+<footer>
+Ads Managed By
+<a href="https://t.me/+-HYxd1wYkMkzYzI1" target="_blank">
+MaxJohn Ad Agency
+</a>
+</footer>
